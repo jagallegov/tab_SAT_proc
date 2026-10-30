@@ -1,0 +1,1188 @@
+    /* Tokens tomados del tema "main" del Kit UNAL                         */
+    /* ------------------------------------------------------------------ */
+    :root {
+      --dsh-primary: #677d29;
+      /* primary-40  */
+      --dsh-primary-30: #516320;
+      --dsh-primary-95: #f4fddd;
+      --dsh-gris: #a2a3a4;
+      /* neutral-70  */
+      --dsh-linea: #dcdcdc;
+      /* neutral-90  */
+      --dsh-panel: #f4f4f4;
+      /* neutral-95  */
+      --dsh-tinta: #242627;
+      /* neutral-20  */
+      --dsh-tinta-2: #4e5254;
+      /* neutral-50  */
+      --dsh-aprobada: #d49d00;
+      /* warning-60  */
+      --dsh-cancelada: #3d4041;
+      /* neutral-40  */
+      --dsh-reprobada: #d40f00;
+      /* danger-50   */
+      --dsh-azul: #2ba6cb;
+      /* t-blue-70   */
+      --dsh-azul-claro: #4fc5e9;
+      /* t-blue-80   */
+      --dsh-verde: #289a64;
+      /* success-50  */
+      --dsh-punto: #87a436;
+      /* primary-50  */
+      --dsh-radio: .5rem;
+      --dsh-etiqueta: 190px;
+      /* ancho fijo del eje de categorías */
+      --dsh-alto-grafico: 300px;
+      --dsh-alto-hero: 380px;
+      --dsh-alto-encabezado: 2.4rem;
+      /* altura fija del encabezado de tarjeta */
+    }
+
+    body {
+      background: #fff;
+    }
+
+    .dsh {
+      padding: 1.5rem 1.75rem 2rem;
+      color: var(--dsh-tinta);
+    }
+
+    /* ---------------------------------------------------------- pestañas */
+    .dsh-tabs {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      grid-auto-rows: 1fr;
+      align-items: stretch;
+      gap: .7rem;
+      margin-bottom: 1.4rem;
+    }
+
+    .dsh-tab {
+      display: grid;
+      place-items: center;
+      border: 0;
+      border-radius: var(--dsh-radio);
+      padding: .8rem .7rem;
+      background: var(--dsh-gris);
+      color: #fff;
+      font-weight: 600;
+      font-size: .84rem;
+      line-height: 1.3;
+      cursor: pointer;
+      transition: background .15s ease;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    .dsh-tab:hover {
+      background: #8e9091;
+    }
+
+    .dsh-tab[aria-selected="true"] {
+      background: var(--dsh-primary);
+    }
+
+    .dsh-tab:focus-visible {
+      outline: 3px solid var(--dsh-azul);
+      outline-offset: 2px;
+    }
+
+    /* ---------------------------------------------------------- filtros  */
+    .dsh-filtros {
+      background: var(--dsh-panel);
+      border-radius: var(--dsh-radio);
+      padding: 1.25rem 1.5rem 1.1rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .dsh-grid-f {
+      display: grid;
+      gap: .9rem 1.6rem;
+      align-items: end;
+    }
+
+    /* Tres campos: tipo de cálculo, sedes y eje temporal. */
+    .dsh-grid-f.f-3 {
+      grid-template-columns: minmax(230px, 1fr) minmax(320px, 2.1fr) minmax(190px, 1fr);
+    }
+
+    /* Cuatro campos: se agrega la medida en la matriz de cohortes. */
+    .dsh-grid-f.f-4 {
+      grid-template-columns: minmax(215px, 1.15fr) minmax(170px, 1fr) minmax(200px, 1.05fr) minmax(180px, 1fr);
+    }
+
+    .dsh-campo label,
+    .dsh-leyenda {
+      display: block;
+      font-size: .82rem;
+      color: var(--dsh-tinta-2);
+      margin-bottom: .35rem;
+    }
+
+    .dsh-oblig {
+      color: var(--dsh-reprobada);
+    }
+
+    .dsh-select {
+      width: 100%;
+      border: 1px solid var(--dsh-linea);
+      border-radius: .35rem;
+      padding: .55rem 2rem .55rem .7rem;
+      font-size: .88rem;
+      color: var(--dsh-tinta);
+      background-color: #fff;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%234e5254'%3E%3Cpath d='M8 11L3 5.5h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .6rem center;
+      background-size: 14px;
+      -webkit-appearance: none;
+      appearance: none;
+      cursor: pointer;
+    }
+
+    .dsh-select:disabled {
+      background-color: #ededed;
+      color: var(--dsh-gris);
+      cursor: not-allowed;
+    }
+
+    .dsh-select:focus-visible {
+      outline: 2px solid var(--dsh-primary);
+      outline-offset: 1px;
+    }
+
+    .dsh-radios {
+      display: flex;
+      gap: 1.25rem;
+      align-items: center;
+      min-height: 38px;
+      flex-wrap: wrap;
+    }
+
+    .dsh-radios label {
+      display: flex;
+      gap: .45rem;
+      align-items: center;
+      font-size: .9rem;
+      margin: 0;
+      cursor: pointer;
+      color: var(--dsh-tinta);
+    }
+
+    .dsh-radios input {
+      accent-color: var(--dsh-primary);
+      width: 1.05rem;
+      height: 1.05rem;
+      cursor: pointer;
+    }
+
+    .dsh-radios label.inhabilitado {
+      color: var(--dsh-gris);
+      cursor: not-allowed;
+    }
+
+    .dsh-acciones {
+      display: flex;
+      justify-content: flex-end;
+      margin-top: 1rem;
+    }
+
+    .dsh-btn {
+      display: inline-flex;
+      align-items: center;
+      gap: .55rem;
+      background: #fff;
+      border: 1px solid var(--dsh-primary);
+      color: var(--dsh-primary-30);
+      font-weight: 600;
+      font-size: .9rem;
+      border-radius: .4rem;
+      padding: .6rem 1.1rem;
+      cursor: pointer;
+      transition: background .15s ease;
+    }
+
+    .dsh-btn:hover {
+      background: var(--dsh-primary-95);
+    }
+
+    .dsh-btn svg {
+      width: 18px;
+      height: 18px;
+      fill: var(--dsh-primary-30);
+    }
+
+    /* ------------------------------------------- control segmentado */
+    .dsh-segmento {
+      display: grid;
+      grid-auto-flow: column;
+      grid-auto-columns: 1fr;
+      border: 1px solid var(--dsh-linea);
+      background: #fff;
+      border-radius: .4rem;
+      padding: 2px;
+      gap: 2px;
+      min-height: 38px;
+      align-items: stretch;
+    }
+
+    .dsh-segmento button {
+      border: 0;
+      background: transparent;
+      color: var(--dsh-tinta-2);
+      font-size: .84rem;
+      font-weight: 500;
+      padding: .42rem .95rem;
+      border-radius: .3rem;
+      cursor: pointer;
+      transition: background .15s ease, color .15s ease;
+      white-space: nowrap;
+      overflow: visible;
+    }
+
+    .dsh-segmento button:hover:not(:disabled) {
+      background: var(--dsh-panel);
+    }
+
+    .dsh-segmento button[aria-pressed="true"] {
+      background: var(--dsh-primary);
+      color: #fff;
+      font-weight: 600;
+    }
+
+    .dsh-segmento button:disabled {
+      color: #cfd0d1;
+      cursor: not-allowed;
+    }
+
+    .dsh-segmento button:focus-visible {
+      outline: 2px solid var(--dsh-azul);
+      outline-offset: 1px;
+    }
+
+    .dsh-segmento.compacto {
+      min-height: 32px;
+    }
+
+    .dsh-segmento.compacto button {
+      font-size: .76rem;
+      padding: .3rem .6rem;
+    }
+
+    /* --------------------------------------------- selector múltiple */
+    .dsh-multi {
+      position: relative;
+    }
+
+    .dsh-multi > button {
+      width: 100%;
+      text-align: left;
+      border: 1px solid var(--dsh-linea);
+      border-radius: .35rem;
+      background: #fff;
+      padding: .55rem 2rem .55rem .7rem;
+      font-size: .88rem;
+      color: var(--dsh-tinta);
+      cursor: pointer;
+      min-height: 38px;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='%234e5254'%3E%3Cpath d='M8 11L3 5.5h10z'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right .6rem center;
+      background-size: 14px;
+    }
+
+    .dsh-multi > button:focus-visible {
+      outline: 2px solid var(--dsh-primary);
+      outline-offset: 1px;
+    }
+
+    .dsh-multi-panel {
+      position: absolute;
+      z-index: 50;
+      top: calc(100% + .25rem);
+      left: 0;
+      right: 0;
+      min-width: 210px;
+      background: #fff;
+      border: 1px solid var(--dsh-linea);
+      border-radius: .4rem;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, .14);
+      padding: .5rem;
+    }
+
+    .dsh-multi-acc {
+      display: flex;
+      gap: .4rem;
+      margin-bottom: .4rem;
+    }
+
+    .dsh-multi-acc button {
+      flex: 1 1 0;
+      border: 1px solid var(--dsh-linea);
+      background: #fff;
+      border-radius: .3rem;
+      font-size: .74rem;
+      padding: .28rem .4rem;
+      color: var(--dsh-tinta-2);
+      cursor: pointer;
+    }
+
+    .dsh-multi-acc button:hover {
+      background: var(--dsh-panel);
+    }
+
+    .dsh-multi-lista {
+      max-height: 210px;
+      overflow: auto;
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: .1rem .5rem;
+    }
+
+    .dsh-multi-lista label {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+      font-size: .78rem;
+      color: var(--dsh-tinta-2);
+      padding: .16rem .2rem;
+      border-radius: .2rem;
+      cursor: pointer;
+      margin: 0;
+    }
+
+    .dsh-multi-lista label:hover {
+      background: var(--dsh-panel);
+    }
+
+    .dsh-multi-lista input {
+      accent-color: var(--dsh-primary);
+      width: .95rem;
+      height: .95rem;
+      cursor: pointer;
+    }
+
+    /* ------------------------------------------------- selector de series */
+    .dsh-fichas {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .45rem;
+      min-height: 38px;
+      align-items: center;
+    }
+
+    .dsh-ficha {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border: 1px solid var(--dsh-linea);
+      background: #fff;
+      color: var(--dsh-tinta-2);
+      border-radius: 999px;
+      padding: .34rem .7rem;
+      font-size: .8rem;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease;
+    }
+
+    .dsh-ficha:hover {
+      background: var(--dsh-panel);
+    }
+
+    .dsh-ficha[aria-pressed="true"] {
+      border-color: var(--dsh-primary);
+      background: var(--dsh-primary-95);
+      color: var(--dsh-primary-30);
+      font-weight: 600;
+    }
+
+    .dsh-ficha:focus-visible {
+      outline: 2px solid var(--dsh-azul);
+      outline-offset: 1px;
+    }
+
+    .dsh-ficha i {
+      width: 9px;
+      height: 9px;
+      border-radius: 50%;
+      display: inline-block;
+      flex: 0 0 9px;
+    }
+
+    /* ------------------------------------------------------------- KPI   */
+    .dsh-kpis {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      grid-auto-rows: 1fr;
+      align-items: stretch;
+      gap: .8rem;
+      margin-bottom: 1.25rem;
+    }
+
+    .dsh-kpi {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+      background: #fff;
+      border: 1px solid var(--dsh-linea);
+      border-radius: .55rem;
+      padding: .8rem .9rem;
+      min-width: 0;
+    }
+
+    .dsh-kpi > span:last-child {
+      min-width: 0;
+    }
+
+    .dsh-kpi-ic {
+      flex: 0 0 36px;
+      width: 36px;
+      height: 36px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+    }
+
+    .dsh-kpi-ic svg {
+      width: 19px;
+      height: 19px;
+      fill: #fff;
+    }
+
+    .dsh-kpi-lab {
+      display: block;
+      font-size: .78rem;
+      color: var(--dsh-tinta-2);
+      line-height: 1.3;
+      text-wrap: balance;
+    }
+
+    .dsh-kpi-val {
+      display: block;
+      font-size: 1.3rem;
+      font-weight: 700;
+      line-height: 1.3;
+      font-variant-numeric: tabular-nums;
+      overflow-wrap: anywhere;
+    }
+
+    .dsh-kpi-pie {
+      display: block;
+      font-size: .72rem;
+      color: var(--dsh-gris);
+      line-height: 1.2;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    /* ----------------------------------------------------------- tarjetas */
+    .dsh-lienzo {
+      display: grid;
+      grid-template-columns: 47fr 53fr;
+      gap: 1.1rem;
+      align-items: stretch;
+    }
+
+    .dsh-col {
+      display: flex;
+      flex-direction: column;
+      gap: 1.1rem;
+    }
+
+    /* Mosaicos: todas las tarjetas de una fila comparten altura. */
+    .dsh-mosaico {
+      display: grid;
+      gap: 1.1rem;
+      grid-auto-rows: 1fr;
+      align-items: stretch;
+      margin-bottom: 1.1rem;
+    }
+
+    .dsh-mosaico-1 {
+      grid-template-columns: 1fr;
+    }
+
+    .dsh-mosaico-2 {
+      grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dsh-mosaico-3 {
+      grid-template-columns: repeat(3, 1fr);
+    }
+
+    .dsh-card {
+      background: #fff;
+      border: 1px solid var(--dsh-linea);
+      border-radius: .6rem;
+      padding: 1rem 1.15rem 1.1rem;
+      display: flex;
+      flex-direction: column;
+      min-width: 0;
+    }
+
+    .dsh-card h2 {
+      font-size: 1.05rem;
+      font-weight: 600;
+      margin: 0;
+      color: var(--dsh-tinta);
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+    }
+
+    .dsh-card-h {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 1rem;
+      flex-wrap: wrap;
+      min-height: var(--dsh-alto-encabezado);
+      margin-bottom: .85rem;
+    }
+
+    .dsh-conteo {
+      font-size: .78rem;
+      color: var(--dsh-tinta-2);
+      white-space: nowrap;
+    }
+
+    .dsh-acc {
+      display: flex;
+      align-items: center;
+      gap: .4rem;
+    }
+
+    .dsh-ico {
+      display: grid;
+      place-items: center;
+      width: 30px;
+      height: 30px;
+      flex: 0 0 30px;
+      border: 1px solid var(--dsh-linea);
+      background: #fff;
+      border-radius: .35rem;
+      cursor: pointer;
+      transition: background .15s ease, border-color .15s ease;
+    }
+
+    .dsh-ico svg {
+      width: 15px;
+      height: 15px;
+      fill: var(--dsh-tinta-2);
+    }
+
+    .dsh-ico:hover {
+      background: var(--dsh-primary-95);
+      border-color: var(--dsh-primary);
+    }
+
+    .dsh-ico:hover svg {
+      fill: var(--dsh-primary-30);
+    }
+
+    .dsh-ico:focus-visible {
+      outline: 2px solid var(--dsh-azul);
+      outline-offset: 1px;
+    }
+
+    .dsh-cuerpo {
+      flex: 1 1 auto;
+      min-height: 0;
+    }
+
+    .dsh-grafico {
+      width: 100%;
+      height: var(--dsh-alto-grafico);
+    }
+
+    /* Los gráficos con muchas categorías se desplazan con la misma barra
+       nativa que las tablas, en lugar de comprimir las barras. */
+    .dsh-scroll {
+      overflow: auto;
+      max-width: 100%;
+    }
+
+    .dsh-scroll::-webkit-scrollbar {
+      height: 10px;
+      width: 10px;
+    }
+
+    .dsh-scroll::-webkit-scrollbar-thumb {
+      background: #cfd0d1;
+      border-radius: 6px;
+    }
+
+    .dsh-scroll::-webkit-scrollbar-thumb:hover {
+      background: var(--dsh-gris);
+    }
+
+    .dsh-scroll::-webkit-scrollbar-track {
+      background: var(--dsh-panel);
+      border-radius: 6px;
+    }
+
+    .dsh-grafico.hero {
+      height: var(--dsh-alto-hero);
+    }
+
+    .dsh-grafico.alto {
+      height: 520px;
+    }
+
+    .dsh-grafico.medio {
+      height: 340px;
+    }
+
+    .dsh-grafico.mapa {
+      height: 560px;
+    }
+
+    /* ----------------------------------------- ícono de información */
+    .dsh-info {
+      position: relative;
+      display: inline-grid;
+      place-items: center;
+      width: 18px;
+      height: 18px;
+      flex: 0 0 18px;
+      border-radius: 50%;
+      border: 1px solid var(--dsh-gris);
+      background: #fff;
+      padding: 0;
+      cursor: help;
+    }
+
+    .dsh-info svg {
+      width: 11px;
+      height: 11px;
+      fill: var(--dsh-tinta-2);
+    }
+
+    .dsh-info:hover,
+    .dsh-info:focus-visible {
+      border-color: var(--dsh-primary);
+      background: var(--dsh-primary-95);
+      outline: none;
+    }
+
+    .dsh-info:hover svg,
+    .dsh-info:focus-visible svg {
+      fill: var(--dsh-primary-30);
+    }
+
+    .dsh-globo {
+      position: absolute;
+      z-index: 40;
+      top: calc(100% + .45rem);
+      left: 0;
+      width: 340px;
+      max-width: 78vw;
+      background: var(--dsh-panel);
+      border: 1px solid var(--dsh-linea);
+      border-radius: .4rem;
+      padding: .7rem .85rem;
+      font-size: .78rem;
+      font-weight: 400;
+      line-height: 1.45;
+      color: var(--dsh-tinta-2);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, .12);
+      text-align: left;
+      display: none;
+    }
+
+    .dsh-info:hover .dsh-globo,
+    .dsh-info:focus-visible .dsh-globo,
+    .dsh-info .dsh-globo.visible {
+      display: block;
+    }
+
+    .dsh-globo b {
+      display: block;
+      color: var(--dsh-tinta);
+      margin-bottom: .3rem;
+    }
+
+    .dsh-globo em {
+      display: block;
+      margin-top: .4rem;
+      color: var(--dsh-gris);
+      font-style: normal;
+      font-size: .73rem;
+    }
+
+    /* -------------------------------------------------------------- tabla */
+    .dsh-tabla-wrap {
+      overflow: auto;
+      max-height: 430px;
+      border-radius: .3rem;
+    }
+
+    .dsh-tabla {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+      font-size: .78rem;
+    }
+
+    /* Tablas con muchas columnas: se desplazan en horizontal en lugar de
+       comprimir las celdas hasta hacerlas ilegibles. */
+    .dsh-tabla.ancha {
+      table-layout: auto;
+      width: auto;
+      min-width: 100%;
+    }
+
+    .dsh-tabla.ancha th,
+    .dsh-tabla.ancha td {
+      white-space: nowrap;
+      min-width: 74px;
+    }
+
+    .dsh-tabla.ancha th.fija,
+    .dsh-tabla.ancha td.fija {
+      min-width: 132px;
+    }
+
+    .dsh-tabla th,
+    .dsh-tabla td {
+      font-size: .78rem;
+      font-weight: 400;
+      line-height: 1.35;
+    }
+
+    .dsh-tabla thead th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #f7f8f4;
+      border-bottom: 1px solid var(--dsh-linea);
+      padding: .6rem .55rem;
+      text-align: center;
+      font-weight: 600;
+      color: var(--dsh-tinta);
+      white-space: nowrap;
+      cursor: pointer;
+      -webkit-user-select: none;
+      user-select: none;
+    }
+
+    .dsh-tabla thead th:hover {
+      background: #f2f4ec;
+    }
+
+    .dsh-tabla thead th .ord {
+      color: var(--dsh-primary);
+      font-size: .7rem;
+    }
+
+    .dsh-tabla td {
+      padding: .42rem .55rem;
+      border-bottom: 1px solid #f3f3f3;
+      color: var(--dsh-tinta-2);
+      text-align: center;
+    }
+
+    .dsh-tabla tbody tr:nth-child(even) {
+      background: #fbfbfa;
+    }
+
+    .dsh-tabla tbody tr:hover {
+      background: var(--dsh-primary-95);
+    }
+
+    /* Primera columna fija: sirve para el detalle y para la matriz de cohortes. */
+    .dsh-tabla .fija {
+      position: sticky;
+      left: 0;
+      z-index: 1;
+      background: #fff;
+      color: var(--dsh-tinta);
+      text-align: center;
+      box-shadow: 1px 0 0 var(--dsh-linea);
+    }
+
+    .dsh-tabla thead .fija {
+      font-weight: 600;
+    }
+
+    .dsh-tabla thead .fija {
+      z-index: 3;
+      background: #f7f8f4;
+    }
+
+    .dsh-tabla tbody tr:nth-child(even) .fija {
+      background: #fbfbfa;
+    }
+
+    .dsh-tabla tbody tr:hover .fija {
+      background: var(--dsh-primary-95);
+    }
+
+
+
+    .dsh-punto-l {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      display: inline-block;
+      margin-right: .35rem;
+      vertical-align: baseline;
+    }
+
+    .num {
+      text-align: center;
+      font-variant-numeric: tabular-nums;
+      white-space: nowrap;
+    }
+
+    .dsh-vacio {
+      padding: 2.5rem 1rem;
+      text-align: center;
+      color: var(--dsh-tinta-2);
+      font-size: .9rem;
+    }
+
+    .dsh-nota {
+      margin: 1.25rem 0 0;
+      font-size: .74rem;
+      color: var(--dsh-gris);
+      text-align: left;
+    }
+
+    .dsh-formula {
+      font-size: .78rem;
+      color: var(--dsh-tinta-2);
+      background: var(--dsh-panel);
+      border-radius: .4rem;
+      padding: .6rem .8rem;
+      margin: 0 0 .9rem;
+    }
+
+    .dsh-definicion {
+      margin-bottom: 1.1rem;
+      background: var(--dsh-panel);
+      border-radius: var(--dsh-radio);
+      padding: .95rem 1.15rem;
+      font-size: .84rem;
+      line-height: 1.55;
+      color: var(--dsh-tinta-2);
+    }
+
+    /* Selección activa: fichas que muestran y retiran los filtros vigentes. */
+    .dsh-seleccion {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: .45rem;
+      background: var(--dsh-panel);
+      border-radius: var(--dsh-radio);
+      padding: .7rem 1.15rem;
+      margin: 0 0 1.15rem;
+      font-size: .82rem;
+      line-height: 1.55;
+      color: var(--dsh-tinta-2);
+    }
+
+    .dsh-seleccion b {
+      color: var(--dsh-tinta);
+      font-weight: 600;
+      margin-right: .3rem;
+    }
+
+    .dsh-quitar {
+      display: inline-flex;
+      align-items: center;
+      gap: .4rem;
+      border: 1px solid var(--dsh-primary);
+      background: #fff;
+      color: var(--dsh-primary-30);
+      border-radius: 999px;
+      padding: .22rem .5rem .22rem .65rem;
+      font-size: .76rem;
+      font-weight: 600;
+      cursor: pointer;
+    }
+
+    .dsh-quitar:hover {
+      background: var(--dsh-primary-95);
+    }
+
+    .dsh-quitar span {
+      font-weight: 700;
+      font-size: .9rem;
+      line-height: 1;
+    }
+
+    .dsh-limpiar-sel {
+      border: 0;
+      background: transparent;
+      color: var(--dsh-tinta-2);
+      font-size: .76rem;
+      text-decoration: underline;
+      cursor: pointer;
+      padding: .2rem .3rem;
+    }
+
+    /* Nota bajo los filtros: qué significa el tipo de cálculo activo.
+       Conserva la misma apariencia del bloque de definición y de los filtros. */
+    .dsh-enfoque-nota {
+      background: var(--dsh-panel);
+      border-radius: var(--dsh-radio);
+      padding: .8rem 1.15rem;
+      margin: 0 0 1.15rem;
+      font-size: .82rem;
+      line-height: 1.55;
+      color: var(--dsh-tinta-2);
+    }
+
+    .dsh-enfoque-nota b {
+      color: var(--dsh-tinta);
+      font-weight: 600;
+    }
+
+    .dsh-definicion h2.dsh-tit {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dsh-tinta);
+      margin: 0 0 .4rem;
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+    }
+
+    .dsh-definicion p {
+      margin: 0;
+    }
+
+    .dsh-definicion h1 {
+      font-size: 1rem;
+      font-weight: 600;
+      color: var(--dsh-tinta);
+      margin: 0 0 .4rem;
+      display: flex;
+      align-items: center;
+      gap: .45rem;
+    }
+
+    .dsh-definicion p + p {
+      margin-top: .5rem;
+    }
+
+    .dsh-aviso {
+      border-left: 3px solid var(--dsh-aprobada);
+      background: #fffaf0;
+      border-radius: .3rem;
+      padding: .6rem .8rem;
+      font-size: .78rem;
+      color: var(--dsh-tinta-2);
+      margin: 0 0 1.1rem;
+    }
+
+    [hidden] {
+      display: none !important;
+    }
+
+    /* --------------------------------------------------------- responsive */
+    @media (max-width: 1399.98px) {
+      .dsh-mosaico-3 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 1199.98px) {
+      .dsh-kpis {
+        grid-template-columns: repeat(3, 1fr);
+      }
+
+      .dsh-grid-f.f-3,
+      .dsh-grid-f.f-4 {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dsh-tabs {
+        grid-template-columns: repeat(4, 1fr);
+      }
+    }
+
+    @media (max-width: 991.98px) {
+      .dsh-lienzo {
+        grid-template-columns: 1fr;
+      }
+
+      .dsh-mosaico-2,
+      .dsh-mosaico-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .dsh-tabs {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .dsh {
+        padding: 1rem;
+      }
+    }
+
+    @media (max-width: 575.98px) {
+      .dsh-kpis {
+        grid-template-columns: 1fr;
+      }
+
+      .dsh-grid-f.f-3,
+      .dsh-grid-f.f-4 {
+        grid-template-columns: 1fr;
+      }
+
+      :root {
+        --dsh-etiqueta: 120px;
+        --dsh-alto-grafico: 260px;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      * {
+        transition: none !important;
+      }
+    }
+
+    /* ------------------------------------------------------------------ */
+    /* Respaldo: solo se aplica si el CSS del Kit UNAL no cargó            */
+    /* ------------------------------------------------------------------ */
+    .sin-kit body {
+      margin: 0;
+      font-family: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      color: #242627;
+    }
+
+    .sin-kit header {
+      position: relative;
+      background: var(--dsh-primary);
+      min-height: 88px;
+      display: flex;
+      align-items: center;
+      padding-left: 205px;
+    }
+
+    .sin-kit #divider-top {
+      position: absolute;
+      inset: 0 0 auto 0;
+      height: 9px;
+      background: #4a4d3a;
+    }
+
+    .sin-kit header .section-icon {
+      position: absolute;
+      left: 38px;
+      top: -6px;
+    }
+
+    .sin-kit header img {
+      width: 112px;
+      height: 112px;
+      border-radius: 50%;
+      background: #fff;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, .22);
+    }
+
+    .sin-kit #name-aplication {
+      margin: 0;
+      color: #fff;
+      font-weight: 700;
+      font-size: 1.05rem;
+    }
+
+    .sin-kit footer {
+      background: var(--dsh-primary);
+      color: #fff;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: .75rem 2rem;
+      padding: 1.1rem 2rem;
+      font-size: .8rem;
+    }
+
+    .sin-kit footer p {
+      margin: 0;
+    }
+
+    .sin-kit footer a {
+      color: #fff;
+    }
+
+    .sin-kit .info-help,
+    .sin-kit .more-info {
+      display: flex;
+      align-items: center;
+      gap: .75rem;
+    }
+
+    .sin-kit .vr {
+      width: 1px;
+      height: 1.1rem;
+      background: rgba(255, 255, 255, .55);
+    }
+
+    .sin-kit .more-info {
+      text-align: right;
+    }
+
+/* ---------------- Ventanilla SAT: ingreso, usuario, niveles de riesgo ---------------- */
+:root { --r-bajo:#289a64; --r-medio:#d49d00; --r-alto:#d40f00; }
+.sat-login { min-height: 60vh; }
+.sat-login form.login { background:#fafafa; width:min(440px, 92vw); padding:2.4rem 2.2rem; margin:2rem 0; }
+.sat-login #header-login { font-size:1.5rem; font-weight:700; }
+.dsh-barra { display:flex; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1.2rem; }
+.dsh-barra h1 { font-size:1.25rem; font-weight:700; margin:0; color:var(--dsh-tinta); }
+.dsh-barra p { margin:.15rem 0 0; font-size:.8rem; color:var(--dsh-tinta-2); }
+.dsh-usuario { display:flex; align-items:center; gap:.7rem; font-size:.82rem; color:var(--dsh-tinta-2); }
+.dsh-usuario b { color:var(--dsh-tinta); display:block; }
+.dsh-avatar { width:34px; height:34px; border-radius:50%; background:var(--dsh-primary); color:#fff; display:grid; place-items:center; font-weight:700; }
+.dsh-texto { width:100%; border:1px solid var(--dsh-linea); border-radius:.35rem; padding:.55rem .7rem; font-size:.88rem; background:#fff; color:var(--dsh-tinta); }
+.dsh-texto:focus-visible { outline:2px solid var(--dsh-primary); outline-offset:1px; }
+.niv { display:inline-flex; align-items:center; gap:.35rem; font-weight:600; font-size:.74rem; padding:.16rem .6rem; border-radius:999px; color:#fff; }
+.niv.n0 { background:var(--r-bajo); } .niv.n1 { background:var(--r-medio); } .niv.n2 { background:var(--r-alto); }
+.dsh-tabla tbody tr.clic { cursor:pointer; }
+.dsh-tabla td.izq, .dsh-tabla th.izq { text-align:center; }
+.dsh-ayuda { font-size:.76rem; color:var(--dsh-gris); margin:.5rem 0 0; }
+.ind-cab { display:grid; grid-template-columns: 1.1fr 1.4fr; gap:1.1rem; margin-bottom:1.1rem; }
+.ind-id h2 { font-size:1.2rem; margin:0 0 .2rem; } .ind-id p { margin:.1rem 0; font-size:.84rem; color:var(--dsh-tinta-2); }
+.ind-medidor { display:flex; align-items:center; gap:1.2rem; }
+.ind-valor { font-size:2.6rem; font-weight:700; line-height:1; font-variant-numeric:tabular-nums; }
+.ind-barra { position:relative; height:12px; border-radius:6px; margin:1.1rem 0 .4rem;
+  background:linear-gradient(90deg,var(--r-bajo) 0 5%,var(--r-medio) 5% 15%,var(--r-alto) 15% 100%); }
+.ind-marca { position:absolute; top:-5px; width:4px; height:22px; background:var(--dsh-tinta); border-radius:2px; transform:translateX(-2px); }
+.ind-escala { display:flex; justify-content:space-between; font-size:.7rem; color:var(--dsh-tinta-2); }
+.dsh-fichas-s { display:flex; flex-wrap:wrap; gap:.4rem; }
+.dsh-fichas-s span { background:var(--dsh-panel); border:1px solid var(--dsh-linea); border-radius:999px; padding:.25rem .7rem; font-size:.78rem; color:var(--dsh-tinta-2); }
+.dsh-pie-fuente { font-size:.74rem; color:var(--dsh-gris); margin-top:1.2rem; }
+@media (max-width: 991.98px) { .ind-cab { grid-template-columns:1fr; } }
+
+
+/* Tablas con anchos por columna: llenan la tarjeta y solo se desplazan si no caben. */
+.dsh-tabla.fijo { table-layout:fixed; width:100%; }
+.dsh-tabla.fijo thead th { white-space:normal; vertical-align:middle; line-height:1.25; }
+.dsh-tabla.fijo td { overflow-wrap:anywhere; vertical-align:middle; }
+.dsh-tabla.fijo td.num { white-space:normal; }
+
+.ind-medidor { display:grid; grid-template-columns:1fr 1fr; gap:1.2rem; align-items:start; }
+.ind-dato { display:flex; flex-direction:column; gap:.3rem; min-width:0; }
+.ind-dato + .ind-dato { border-left:1px solid var(--dsh-linea); padding-left:1.2rem; }
+.ind-dato .ind-valor.sec { color:var(--dsh-tinta-2); font-size:2.2rem; }
+.ind-lab { font-size:.8rem; color:var(--dsh-tinta-2); line-height:1.3; }
+
+.dsh-niveles { display:flex; flex-wrap:wrap; align-items:center; gap:.5rem 1.4rem; margin-top:1.2rem; padding:.7rem 1.1rem; background:var(--dsh-panel); border-radius:var(--dsh-radio); font-size:.8rem; color:var(--dsh-tinta-2); }
+.dsh-niveles b { color:var(--dsh-tinta); font-weight:600; }
+.dsh-niveles span { display:inline-flex; align-items:center; gap:.45rem; }
+.dsh-niveles i { width:10px; height:10px; border-radius:50%; display:inline-block; }
+
+.dsh-tabs { grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)) !important; }
+.ficha-cab { flex-direction:row; justify-content:space-between; align-items:center; gap:1rem; flex-wrap:wrap; margin-bottom:1.1rem; }
+.ficha-cab h2 { font-size:1.2rem; margin:0 0 .2rem; } .ficha-cab p { margin:0; font-size:.84rem; color:var(--dsh-tinta-2); }
+.ficha-grid { display:grid; grid-template-columns:repeat(auto-fill, minmax(250px, 1fr)); gap:1rem 1.6rem; }
+.ficha-dato { display:flex; flex-direction:column; gap:.2rem; min-width:0; }
+.ficha-et { font-size:.74rem; color:var(--dsh-tinta-2); }
+.ficha-val { font-size:.9rem; color:var(--dsh-tinta); font-weight:500; overflow-wrap:anywhere; }
+.ficha-val.vacio { color:var(--dsh-gris); font-weight:400; }

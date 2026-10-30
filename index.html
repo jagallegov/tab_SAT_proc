@@ -1,0 +1,64 @@
+<!doctype html>
+<html lang="es" data-bs-theme="light">
+<head>
+  <meta charset="utf-8">
+  <title>Ventanilla de consulta SAT | UNAL Sede Medellín</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="icon" type="image/x-icon" href="https://gestionapp.medellin.unal.edu.co/cdn/assets/favicon.ico">
+  <link rel="stylesheet" href="https://gestionapp.unal.edu.co/cdn/kitUnal/12112024/css/kitUnal.min.css">
+  <link rel="stylesheet" href="https://gestionapp.unal.edu.co/cdn/kitUnal/12112024/css/themes/main.min.css">
+  <script src="https://gestionapp.unal.edu.co/cdn/kitUnal/12112024/js/kitUnal.bundle.min.js"></script>
+  <link rel="stylesheet" href="css/tablero.css">
+</head>
+<body class="body">
+  <header class="m-0">
+    <div class="section-icon"><div class="banner-container">
+      <a href="https://unal.edu.co/" target="_blank" rel="noopener" class="icon-link">
+        <img src="https://gestionapp.medellin.unal.edu.co/cdn/assets/images/logo_unal_circle.png" alt="Escudo de la Universidad Nacional de Colombia" mime="image/png" type="image">
+      </a></div></div>
+    <div id="divider-top"></div>
+    <div id="section-menu-middle"><div class="padded-container">
+      <p id="name-aplication">Ventanilla de consulta SAT | Sede Medellín</p></div></div>
+  </header>
+
+  <main id="main-content" class="body">
+    <div id="root"><p class="dsh-vacio">Cargando la ventanilla…</p></div>
+  </main>
+
+  <footer>
+    <p class="copyright">© Copyright 2026 - Algunos Derechos Reservados</p>
+    <div class="info-help">
+      <p class="dependency">DINARA · Sede Medellín</p><div class="vr"></div>
+      <a class="help-link" href="https://gestionservicios.unal.edu.co/asmscustomer/index.html#/" target="_blank" rel="noopener">
+        <span class="material-symbols-outlined icon">contact_support</span>
+        <span class="text-decoration-underline">¿Necesitas ayuda?</span></a>
+    </div>
+    <div class="more-info"><p>Versión 30102026</p><div class="vr"></div>
+      <p><a class="link-neutral-100" href="https://unal.edu.co/proteccion-de-datos-personales" target="_blank" rel="noopener">Tratamiento de Datos Personales</a></p></div>
+  </footer>
+
+  <script src="datos/sat_meta.js"></script>
+  <script src="datos/sat_est.js"></script>
+  <script src="datos/sat_asig.js"></script>
+  <script src="datos/sat_notas.js"></script>
+  <script src="datos/sat_ficha.js"></script>
+  <script src="datos/sat_riesgo.js"></script>
+  <script src="datos/sat_parciales.js"></script>
+  <script src="vendor/react.min.js"></script>
+  <script src="vendor/react-dom.min.js"></script>
+  <script src="vendor/babel.min.js"></script>
+  <script src="vendor/echarts.min.js"></script>
+  <script>
+    (function () {
+      var raiz = document.getElementById('root');
+      function falla(m) { raiz.innerHTML = '<div class="dsh-aviso"><b>La ventanilla no pudo iniciarse.</b><br>' +
+        'Ábrala desde un servidor web (<code>python3 -m http.server 8000</code>) y no con doble clic.<br><code>' + m + '</code></div>'; }
+      if (location.protocol === 'file:') return falla('Protocolo file:');
+      fetch('js/app.jsx').then(function (r) { if (!r.ok) throw new Error('HTTP ' + r.status); return r.text(); })
+        .then(function (f) {
+          new Function(Babel.transform(f, { filename: 'app.jsx', presets: [['react', { runtime: 'classic' }]] }).code)();
+        }).catch(function (e) { falla(String(e.message || e)); console.error(e); });
+    })();
+  </script>
+</body>
+</html>
